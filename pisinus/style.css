@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  height: max-content;
+  margin: 0;
+  padding: 100px;
+  background: white;
+  scale: 0.5;
+}
+.container{
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #00ffff;
+  width: 500px;
+  height: 500px;
+}
+#circle-container{
+  top: 0;
+  left: 0;
+}
+#sine-container{
+  top: 0;
+  left: 600px;
+}
+#circle{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  background: linear-gradient(to bottom, #00ffff, #ff00ff);
+  width: 500px;
+  height: 500px;
+  border: 10px black solid;
+  border-radius: 50%;
+  animation: spin 5s linear infinite;
+}
+
+#bar{
+  position: relative;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  width: 500px;
+  height: 10px;
+  z-index: 5;
+  background-color: black;
+  border-radius: 5px;
+}
+.sine-element{
+  grid-row-start: 1;
+  grid-column-start: 1;
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: black;
+  z-index: 20;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,94 @@
+* {
+  font-family: "Martian Mono", monospace;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+h2 {
+  flex: 2;
+  text-align: center;
+}
+td {
+  text-align: center;
+}
+thead * {
+  text-decoration: underline;
+}
+
+.box {
+  flex: 1;
+  padding: 10px;
+  margin: 10px;
+  border: 5px black solid;
+}
+.clickable{
+  transition-duration: 200ms;
+  transition-timing-function: ease-out;
+}
+.clickable:hover {
+  box-shadow: 5px 5px black;
+  transform: translate(-5px, -5px);
+}
+.clickable:active{
+  box-shadow: none;
+  transform: none;
+  transition-duration: 30ms;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.form-field {
+  background-color: white;
+  justify-content: space-evenly;
+  gap: 10px;
+  flex: 2;
+}
+.form-input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+#site-header {
+  background-color: lightgreen;
+}
+#nav-form {
+  display: flex;
+  justify-content: space-evenly;
+}
+.clickable {
+  background-color: white;
+  font-size: medium;
+}
+#site-content-1 {
+  background-color: lightcoral;
+}
+#site-content-2 {
+  background-color: lightyellow;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#login-form {
+  flex: 2;
+}
+#register-btn {
+  background-color: lightgreen;
+  min-width: fit-content;
+}
+
+#site-content-3 {
+  background-color: lightsteelblue;
+}
