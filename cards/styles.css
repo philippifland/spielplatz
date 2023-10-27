@@ -21,11 +21,11 @@ body {
     margin: 10px;
     border-radius: 10px;
   
-    transform: translateX(200%);
+    transform: translateX(100vw);
     transition: transform 400ms ease;
   }
   .box:nth-of-type(even) {
-    transform: translateX(-200%);
+    transform: translateX(-100vw);
   }
   .box.show {
     transform: translateX(0%);
