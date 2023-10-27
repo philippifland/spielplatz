@@ -8,15 +8,21 @@ body {
   font-family: 'Roboto', sans-serif;
   height: max-content;
   margin: 0;
-  padding: 100px;
   background: white;
-  scale: 0.5;
+  scale: 1;
+  padding: 20px;
+}
+.box{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1000px;
 }
 .container{
   position: absolute;
   display: grid;
   grid-template-columns: 1fr;
-  background-color: #00ffff;
   width: 500px;
   height: 500px;
 }
@@ -34,7 +40,6 @@ body {
   background: linear-gradient(to bottom, #00ffff, #ff00ff);
   width: 500px;
   height: 500px;
-  border: 10px black solid;
   border-radius: 50%;
   animation: spin 5s linear infinite;
 }
@@ -44,17 +49,30 @@ body {
   grid-row-start: 1;
   grid-column-start: 1;
   width: 500px;
-  height: 10px;
+  height: 1px;
+  box-shadow: 0 0 0 5px black;
   z-index: 5;
   background-color: black;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+.dot{
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px red;
+  background-color: red;
+  z-index: 30;
+}
+
 .sine-element{
   grid-row-start: 1;
   grid-column-start: 1;
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: black;
   z-index: 20;
