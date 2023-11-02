@@ -1,16 +1,16 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = 500;
-canvas.height = 500;
+canvas.width = 1000;
+canvas.height = window.innerHeight * 0.8;
 
 var scaleFactor = 50;
 ctx.translate(canvas.width / 2, canvas.height / 2);
 ctx.scale(scaleFactor, -scaleFactor);
 
-var XMIN = -5, XMAX = 10;
+var XMIN = -scaleFactor, XMAX = scaleFactor;
 var XRANGE = XMAX - XMIN;
-var XSTEPS = 75;
+var XSTEPS = 50*scaleFactor;
 
 var f = function f(x) {
     return 1/20 * (Math.pow(x,4) + Math.pow(x,3) - 13*Math.pow(x,2) - x);
@@ -39,19 +39,47 @@ function drawAxes(){
     ctx.stroke();
     ctx.closePath();
 }
-function drawGrid(){
-    ctx.strokeStyle = "rgba(0,0,0,0.1)"; 
-    ctx.lineWidth = 1 / scaleFactor;
-    ctx.beginPath();
-    for(var x = XMIN; x <= XMAX; x+= (XRANGE/XSTEPS)){
-        ctx.moveTo(x, XMIN);
-        ctx.lineTo(x, XMAX);
-        ctx.moveTo(XMIN, x);
-        ctx.lineTo(XMAX, x);
+//catch mousedown event
+var isMouseDown = false;
+var prevX, prevY;
+canvas.addEventListener("mousedown", function(e){
+    isMouseDown = true;
+    prevX = e.clientX;
+    prevY = e.clientY;
+});
+canvas.addEventListener("mouseup", function(e){
+    isMouseDown = false;
+});
+//get drag event
+canvas.addEventListener("mousemove", function(e){
+    if(isMouseDown){
+        var dx = e.clientX - prevX;
+        var dy = e.clientY - prevY;
+        ctx.translate(dx / scaleFactor, -dy / scaleFactor);
+        prevX = e.clientX;
+        prevY = e.clientY;
+        ctx.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+        drawAxes();
+        plotF();
     }
-    ctx.stroke();
-    ctx.closePath();
-}
+});
+canvas.addEventListener("wheel", function(e){
+    var delta = e.wheelDelta ? e.wheelDelta : -e.detail;
+    if(delta > 0){
+        scaleFactor *= 1.1;
+        ctx.scale(1.1, 1.1);
+    }else{
+        scaleFactor *= 0.9;
+        ctx.scale(0.9, 0.9);
+    }
+    XMIN = -scaleFactor
+    XMAX = scaleFactor;
+    XRANGE = XMAX - XMIN;
+    XSTEPS = 50*scaleFactor;
+
+    ctx.clearRect(-canvas.width / 2, -canvas.height / 2, canvas.width, canvas.height);
+    drawAxes();
+    plotF();
+});
 
 drawAxes();
-drawGrid();
