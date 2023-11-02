@@ -16,8 +16,8 @@ var f = function f(x) {
     return 1/20 * (Math.pow(x,4) + Math.pow(x,3) - 13*Math.pow(x,2) - x);
     };
 function plotF(){
-    ctx.strokeStyle = "rgba(0,0,0,1)"; 
-    ctx.lineWidth = 1 / scaleFactor;
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3 / scaleFactor;
     ctx.beginPath();
     ctx.moveTo(XMIN, f(XMIN));
     for(var x = XMIN; x <= XMAX; x+= (XRANGE/XSTEPS)){
@@ -39,4 +39,19 @@ function drawAxes(){
     ctx.stroke();
     ctx.closePath();
 }
+function drawGrid(){
+    ctx.strokeStyle = "rgba(0,0,0,0.1)"; 
+    ctx.lineWidth = 1 / scaleFactor;
+    ctx.beginPath();
+    for(var x = XMIN; x <= XMAX; x+= (XRANGE/XSTEPS)){
+        ctx.moveTo(x, XMIN);
+        ctx.lineTo(x, XMAX);
+        ctx.moveTo(XMIN, x);
+        ctx.lineTo(XMAX, x);
+    }
+    ctx.stroke();
+    ctx.closePath();
+}
+
 drawAxes();
+drawGrid();
